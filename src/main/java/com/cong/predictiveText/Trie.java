@@ -1,15 +1,12 @@
 package com.cong.predictiveText;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Trie implements Dictionary {
 
     class TrieNode
     {
-        Map<Character, TrieNode> children = new HashMap<Character, TrieNode>();
+        Map<Character, TrieNode> children = new TreeMap<Character, TrieNode>();
 
         // isEndOfWord is true if the node represents
         // end of a word
