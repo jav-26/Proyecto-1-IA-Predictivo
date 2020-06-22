@@ -63,6 +63,10 @@ public class DFS implements Dictionary {
         return (pCrawl != null && pCrawl.isEndOfWord);
     }
 
+    /**
+     * Insertar las palabras del diccionario para hacer la búsqueda en DFS
+     * @param key recibirá la palabra correspondiente a agregar para su posterior búsqueda.
+     */
     public void add(String key) {
         int i;
         int length = key.length();

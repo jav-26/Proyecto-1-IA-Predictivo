@@ -90,7 +90,7 @@ public class App {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
-        frame.setSize(400, 400);
+        frame.setSize(500, 500);
         frame.setLocationRelativeTo(null);
     }
 
