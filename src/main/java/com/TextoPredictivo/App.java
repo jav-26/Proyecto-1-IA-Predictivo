@@ -35,7 +35,7 @@ public class App {
                     if (cbxSearchMethod.getSelectedIndex() == 1) {
                         dictionaryList.setDictionary(BloomFilter.getInstance());
                     } else {
-                        dictionaryList.setDictionary(Trie.getInstance());
+                        dictionaryList.setDictionary(DFS.getInstance());
                     }
 
                     String method = cbxSearchMethod.getSelectedItem().toString();
@@ -73,7 +73,7 @@ public class App {
             public void warn() {
                 if (txtInput.getText().equals("") == false) {
                     listPredictiveText.setEnabled(true);
-                    List<String> list = Trie.getInstance().query(txtInput.getText().toLowerCase());
+                    List<String> list = DFS.getInstance().query(txtInput.getText().toLowerCase());
                     int maxItemDisplay = list.size() > MAX_ITEM_DISPLAY ? MAX_ITEM_DISPLAY : list.size();
                     listPredictiveText.setListData(list.subList(0, maxItemDisplay).toArray());
                 } else {

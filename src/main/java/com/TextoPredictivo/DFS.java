@@ -2,7 +2,7 @@ package com.TextoPredictivo;
 
 import java.util.*;
 
-public class Trie implements Dictionary {
+public class DFS implements Dictionary {
 
     class TrieNode
     {
@@ -26,15 +26,15 @@ public class Trie implements Dictionary {
         return root;
     }
 
-    private Trie(){
+    private DFS(){
         root = new TrieNode();
     };
 
     private static class SingletonHelper{
-        private static final Trie INSTANCE = new Trie();
+        private static final DFS INSTANCE = new DFS();
     }
 
-    public static Trie getInstance(){
+    public static DFS getInstance(){
         return SingletonHelper.INSTANCE;
     }
 
@@ -49,7 +49,7 @@ public class Trie implements Dictionary {
         int i;
         int length = key.length();
         char c;
-        Trie.TrieNode pCrawl = root;
+        DFS.TrieNode pCrawl = root;
 
         for(i = 0; i < length; i++){
             c = key.charAt(i);

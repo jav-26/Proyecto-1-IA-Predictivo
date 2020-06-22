@@ -25,7 +25,7 @@ public class DataNormalizer {
     public static void addDataIntoApp(Set<String> listWord){
 
         for(String word : listWord){
-            Trie.getInstance().add(word);
+            DFS.getInstance().add(word);
             BloomFilter.getInstance().add(word);
         }
     }
