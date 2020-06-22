@@ -1,8 +1,7 @@
 package com.TextoPredictivo;
 
 import java.io.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class DataReader {
 
@@ -15,7 +14,7 @@ public class DataReader {
 
         BufferedReader reader;
 
-        Set<String> totalWord = new HashSet<String>();
+        List<String> totalWord = new ArrayList<String>();
 
         for (File file : fileNames) {
             try {
@@ -34,8 +33,6 @@ public class DataReader {
                 totalWord.addAll(listWord);
 
                 System.out.println("Palabras por archivo: " + listWord.size());
-
-
 
                 document.setLength(0);
 

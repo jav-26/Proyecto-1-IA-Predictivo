@@ -6,7 +6,7 @@ import java.util.regex.*;
 public class DataNormalizer {
 
     public static Set<String> getListWord(String document){
-        Set<String> listWord = new HashSet<String>();
+        Set<String> listWord = new LinkedHashSet<String>();
 
         Pattern pattern = Pattern.compile("<post>(.*?)</post>", Pattern.DOTALL);
         Matcher matcher = pattern.matcher(document);
@@ -19,7 +19,7 @@ public class DataNormalizer {
     public static Set<String> splitWord(String line){
         line = line.replaceAll("[!?,.:;`'~@*#$%&()|\"]", " ");
         String[] words = line.split("[\\s,.]+");
-        return new HashSet<String>(Arrays.asList(words));
+        return new LinkedHashSet<String>(Arrays.asList(words));
     }
 
     public static void addDataIntoApp(Set<String> listWord){
@@ -30,4 +30,3 @@ public class DataNormalizer {
         }
     }
 }
-

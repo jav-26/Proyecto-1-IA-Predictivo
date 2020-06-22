@@ -8,8 +8,13 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.util.List;
 
+/**
+ * Clase App es la encargada de cargar la interfaz gráfica con todos los componentes
+ * necesarios para el usuario y así pueda hacer la búsqueda de las palabras correspondientes
+ * al resultado que arroje el texto predictivo.
+ */
 public class App {
-    private static final int MAX_ITEM_DISPLAY = 10;
+    private static final int MAX_ITEM_DISPLAY = 20;
     private JTextField txtInput;
     private JPanel panelMain;
     private JButton btnSearch;
@@ -35,19 +40,19 @@ public class App {
 
                     String method = cbxSearchMethod.getSelectedItem().toString();
 
-                    long startTime = System.nanoTime();
-                    boolean checkExist = dictionaryList.contains(key);
-                    long endTime = System.nanoTime();
-                    long benchmark = endTime - startTime;
+                    long TiempoDeInicio = System.nanoTime();
+                    boolean verificarExistencia = dictionaryList.contains(key);
+                    long tiempoFinal = System.nanoTime();
+                    long prueba = tiempoFinal - TiempoDeInicio;
 
 
-                    if (checkExist) {
-                        JOptionPane.showMessageDialog(null, key + " exist by " + method + " in " + benchmark + " ns");
+                    if (verificarExistencia) {
+                        JOptionPane.showMessageDialog(null, key + " exist by " + method + " in " + prueba + " ns");
                     } else {
-                        JOptionPane.showMessageDialog(null, key + " does not exist by " + method + " in " + benchmark + " ns");
+                        JOptionPane.showMessageDialog(null, key + " does not exist by " + method + " in " + prueba + " ns");
                     }
                 } else {
-                    JOptionPane.showMessageDialog(null, "Input not null");
+                    JOptionPane.showMessageDialog(null, "Entrada no nula");
                 }
             }
         });
@@ -94,8 +99,8 @@ public class App {
         listPredictiveText.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         listPredictiveText.setLayoutOrientation(JList.VERTICAL);
 
-        cbxSearchMethod.addItem("Trie");
-        cbxSearchMethod.addItem("Bloom filter");
+        cbxSearchMethod.addItem("DFS");
+        cbxSearchMethod.addItem("Ascenso a la colina");
 
         scrollListPredictive.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         scrollListPredictive.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);

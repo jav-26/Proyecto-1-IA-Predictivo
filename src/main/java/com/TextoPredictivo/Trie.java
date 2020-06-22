@@ -6,7 +6,7 @@ public class Trie implements Dictionary {
 
     class TrieNode
     {
-        Map<Character, TrieNode> children = new TreeMap<Character, TrieNode>();
+        Map<Character, TrieNode> children = new LinkedHashMap<Character, TrieNode>();
 
         // isEndOfWord is true if the node represents
         // end of a word
