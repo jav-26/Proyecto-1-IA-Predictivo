@@ -44,7 +44,7 @@ public class DataReader {
                 e.printStackTrace();
             }
         }
-        System.out.println("Total words: " + totalWord.size());
+        System.out.println("Total de palabras: " + totalWord.size());
     }
 }
 
