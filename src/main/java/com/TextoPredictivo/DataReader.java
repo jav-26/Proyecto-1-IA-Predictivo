@@ -1,7 +1,6 @@
-package com.cong.predictiveText;
+package com.TextoPredictivo;
 
 import java.io.*;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 

@@ -1,4 +1,4 @@
-package com.cong.predictiveText;
+package com.TextoPredictivo;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;

@@ -1,4 +1,4 @@
-package com.cong.predictiveText;
+package com.TextoPredictivo;
 
 public interface Dictionary {
     boolean contains(String key);

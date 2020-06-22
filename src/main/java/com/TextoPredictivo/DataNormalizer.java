@@ -1,4 +1,4 @@
-package com.cong.predictiveText;
+package com.TextoPredictivo;
 
 import java.util.*;
 import java.util.regex.*;

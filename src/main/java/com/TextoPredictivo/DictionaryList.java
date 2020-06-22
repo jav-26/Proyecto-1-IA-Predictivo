@@ -1,4 +1,4 @@
-package com.cong.predictiveText;
+package com.TextoPredictivo;
 
 public class DictionaryList {
     private Dictionary dictionary;
