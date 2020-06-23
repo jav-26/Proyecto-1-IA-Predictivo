@@ -106,7 +106,7 @@ public class App {
         scrollListPredictive.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 
         try {
-            DataReader.read(System.getProperty("user.dir") + "/blogs");
+            DataReader.read(System.getProperty("user.dir") + "/palabrasDiccionarios");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
