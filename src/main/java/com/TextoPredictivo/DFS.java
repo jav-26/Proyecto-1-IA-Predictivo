@@ -83,7 +83,7 @@ public class DFS implements Dictionary {
             pCrawl = pCrawl.children.get(c);
         }
 
-        // mark last node as leaf
+        // marcar el último nodo como hoja
         pCrawl.isEndOfWord = true;
     }
 
