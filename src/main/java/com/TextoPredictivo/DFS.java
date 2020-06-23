@@ -4,30 +4,37 @@ import java.util.*;
 
 public class DFS implements Dictionary {
 
-    class TrieNode
+    class Nodo
     {
-        Map<Character, TrieNode> children = new LinkedHashMap<Character, TrieNode>();
+        Map<Character, Nodo> children = new LinkedHashMap<Character, Nodo>();
 
-        // isEndOfWord is true if the node represents
-        // end of a word
-        boolean isEndOfWord;
+        // Si finDePalabra es verdadero entonces el nodo representa
+        // el fin de la palabra.
+
+        /**
+         *
+         */
+        boolean finDePalabra;
 
         boolean isVisit;
 
-        TrieNode(){
-            isEndOfWord = false;
+        Nodo(){
+            finDePalabra = false;
             isVisit = false;
         }
     };
 
-    private TrieNode root;
+    private Nodo root;
 
-    public TrieNode getRoot() {
+    public Nodo getRoot() {
         return root;
     }
 
+    /**
+     * Constructor privado de la clase DFS para crear una raiz
+     */
     private DFS(){
-        root = new TrieNode();
+        root = new Nodo();
     };
 
     private static class SingletonHelper{
@@ -49,7 +56,7 @@ public class DFS implements Dictionary {
         int i;
         int length = key.length();
         char c;
-        DFS.TrieNode pCrawl = root;
+        Nodo pCrawl = root;
 
         for(i = 0; i < length; i++){
             c = key.charAt(i);
@@ -60,7 +67,7 @@ public class DFS implements Dictionary {
             pCrawl = pCrawl.children.get(c);
         }
 
-        return (pCrawl != null && pCrawl.isEndOfWord);
+        return (pCrawl != null && pCrawl.finDePalabra);
     }
 
     /**
@@ -72,19 +79,19 @@ public class DFS implements Dictionary {
         int length = key.length();
         char c;
 
-        TrieNode pCrawl = root;
+        Nodo pCrawl = root;
 
         for (i = 0; i < length; i++)
         {
             c = key.charAt(i);
             if (!pCrawl.children.containsKey(c))
-                pCrawl.children.put(c, new TrieNode());
+                pCrawl.children.put(c, new Nodo());
 
             pCrawl = pCrawl.children.get(c);
         }
 
         // mark last node as leaf
-        pCrawl.isEndOfWord = true;
+        pCrawl.finDePalabra = true;
     }
 
     public List<String> query(String key)
@@ -93,7 +100,7 @@ public class DFS implements Dictionary {
         int i;
         int length = key.length();
         char c;
-        TrieNode pCrawl = root;
+        Nodo pCrawl = root;
 
         for (i = 0; i < length; i++)
         {
@@ -108,9 +115,9 @@ public class DFS implements Dictionary {
         return result;
     }
 
-    private void DFS(TrieNode pCrawl, String key, List<String> result){
+    private void DFS(Nodo pCrawl, String key, List<String> result){
         pCrawl.isVisit = true;
-        if(pCrawl.isEndOfWord){
+        if(pCrawl.finDePalabra){
             result.add(key);
         }
 
