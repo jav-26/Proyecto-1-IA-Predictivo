@@ -33,7 +33,7 @@ public class App {
                     DictionaryList dictionaryList = new DictionaryList();
 
                     if (cbxSearchMethod.getSelectedIndex() == 1) {
-                        dictionaryList.setDictionary(BloomFilter.getInstance());
+                        dictionaryList.setDictionary(AscensoALaColina.getInstance());
                     } else {
                         dictionaryList.setDictionary(DFS.getInstance());
                     }

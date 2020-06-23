@@ -26,7 +26,7 @@ public class DataNormalizer {
 
         for(String word : listWord){
             DFS.getInstance().add(word);
-            BloomFilter.getInstance().add(word);
+            AscensoALaColina.getInstance().add(word);
         }
     }
 }

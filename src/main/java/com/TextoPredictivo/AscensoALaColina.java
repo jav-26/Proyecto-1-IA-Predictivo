@@ -4,7 +4,7 @@ import java.util.BitSet;
 import java.util.Random;
 import java.util.Iterator;
 
-public class BloomFilter implements Dictionary{
+public class AscensoALaColina implements Dictionary{
     private BitSet hashes;
     private RandomInRange randomInRange;
     private int numHashFunc;
@@ -16,7 +16,7 @@ public class BloomFilter implements Dictionary{
      * @param n Expected number of elements
      * @param m Desired size of the container in bits
      **/
-    private BloomFilter(int n, int m) {
+    private AscensoALaColina(int n, int m) {
         numHashFunc = (int) Math.round(LN2 * m / n);
         if (numHashFunc <= 0) numHashFunc = 1;
         this.hashes = new BitSet(m);
@@ -27,16 +27,16 @@ public class BloomFilter implements Dictionary{
      * Create a bloom filter of 1Mib.
      * @param n Expected number of elements
      **/
-    private BloomFilter(int n) {
+    private AscensoALaColina(int n) {
         this(n, 1024*1024*8);
     }
 
     private static class SingletonHelper{
-        private static final BloomFilter INSTANCE = new BloomFilter(MAX_ELEMENTS);
+        private static final AscensoALaColina INSTANCE = new AscensoALaColina(MAX_ELEMENTS);
     }
 
-    public static BloomFilter getInstance(){
-        return BloomFilter.SingletonHelper.INSTANCE;
+    public static AscensoALaColina getInstance(){
+        return AscensoALaColina.SingletonHelper.INSTANCE;
     }
 
 
