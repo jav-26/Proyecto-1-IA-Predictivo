@@ -4,7 +4,7 @@ import java.util.BitSet;
 import java.util.Random;
 import java.util.Iterator;
 
-public class AscensoALaColina implements Dictionary{
+public class AscensoALaColina implements InterDiccionario {
     private BitSet hashes;
     private RandomInRange randomInRange;
     private int numHashFunc;

@@ -14,6 +14,13 @@ import java.util.List;
  * al resultado que arroje el texto predictivo.
  */
 public class App {
+    /**
+     * Variables necesarias para la interfaz gráfica de la aplicación, entre ellas están
+     * la entrada del usuario, el boton de búsqueda, la lista donde se mostrarán las palabras
+     * almacenadas, etc.
+     * @param MAX_ITEM_DISPLAY este parámetro esta declarado como constante para tener un máximo de letras
+     *                         mostradas en pantalla hacia el usuario.
+     */
     private static final int MAX_ITEM_DISPLAY = 20;
     private JTextField txtInput;
     private JPanel panelMain;
@@ -23,26 +30,27 @@ public class App {
     private JComboBox cbxSearchMethod;
 
     public App() {
-
+        //Nos prepara la interfaz gráfica para ser visualizada
         prepareGUI();
 
         btnSearch.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String key = (listPredictiveText.getSelectedIndex() == -1) ? txtInput.getText() : listPredictiveText.getSelectedValue().toString();
                 if (key.equals("") == false) {
-                    DictionaryList dictionaryList = new DictionaryList();
+                    Diccionario diccionario = new Diccionario();
 
                     if (cbxSearchMethod.getSelectedIndex() == 1) {
-                        dictionaryList.setDictionary(AscensoALaColina.getInstance());
+                        diccionario.setInterDiccionario(AscensoALaColina.getInstance());
                     } else {
-                        dictionaryList.setDictionary(DFS.getInstance());
+                        diccionario.setInterDiccionario(DFS.getInstance());
                     }
 
                     //Nos permite almacenar en nombre del método utilizado para la búsqueda de la palabra.
                     String metodoUtilizado = cbxSearchMethod.getSelectedItem().toString();
-
+                    //Variables que nos permiten determinar el tiempo que se demora en realizar la búsqueda
                     long TiempoDeInicio = System.nanoTime();
-                    boolean verificarExistencia = dictionaryList.contains(key);
+                    boolean verificarExistencia = diccionario.contains(key);
+                    List<String> list = DFS.getInstance().query(txtInput.getText().toLowerCase());
                     long tiempoFinal = System.nanoTime();
                     long prueba = tiempoFinal - TiempoDeInicio;
 
