@@ -4,6 +4,9 @@ import java.util.BitSet;
 import java.util.Random;
 import java.util.Iterator;
 
+/**
+ * Clase que implementa la búsqueda de las palabras por la búsqueda de Ascenso a La Colina
+ */
 public class AscensoALaColina implements InterDiccionario {
     private BitSet hashes;
     private RandomInRange randomInRange;
@@ -12,10 +15,10 @@ public class AscensoALaColina implements InterDiccionario {
     private static final int MAX_ELEMENTS = 1400000;
 
     /**
-     * Create a new bloom filter.
-     * @param n Expected number of elements
-     * @param m Desired size of the container in bits
-     **/
+     * recibe valores numéricos para crear una función Hash para comparar las palabras y determinar la mejor opción
+     * @param n primer valor entero.
+     * @param m segundo valor entero.
+     */
     private AscensoALaColina(int n, int m) {
         numHashFunc = (int) Math.round(LN2 * m / n);
         if (numHashFunc <= 0) numHashFunc = 1;
@@ -23,10 +26,7 @@ public class AscensoALaColina implements InterDiccionario {
         this.randomInRange = new RandomInRange(m, numHashFunc);
     }
 
-    /**
-     * Create a bloom filter of 1Mib.
-     * @param n Expected number of elements
-     **/
+
     private AscensoALaColina(int n) {
         this(n, 1024*1024*8);
     }
@@ -39,17 +39,20 @@ public class AscensoALaColina implements InterDiccionario {
         return AscensoALaColina.SingletonHelper.INSTANCE;
     }
 
-
+    /**
+     * Permite agregar una palabra a la lista en caso de que se necesite hacer (todas las palabras recolectadas).
+     * @param key recibe la palabra a ser agregada.
+     */
     public void add(String key) {
         randomInRange.init(key);
         for (RandomInRange r : randomInRange) hashes.set(r.value);
     }
 
     /**
-     * Returns true if the element is in the container.
-     * Returns false with a probability ≈ 1-e^(-ln(2)² * m/n)
-     * if the element is not in the container.
-     **/
+     * Este método nos permite buscar la palabra para conocer si existe o no en búsqueda Ascenso a la Colina
+     * @param key es la palabra a buscar.
+     * @return true si ha sido encontrada y false en caso contrario.
+     */
     public boolean contains(String key) {
         randomInRange.init(key);
         for (RandomInRange r : randomInRange)
@@ -58,6 +61,9 @@ public class AscensoALaColina implements InterDiccionario {
         return true;
     }
 
+    /**
+     * Esta clase nos permite conocer el peso de las palabras iterando dentro de la lista de palabras.
+     */
     private class RandomInRange
             implements Iterable<RandomInRange>, Iterator<RandomInRange> {
 

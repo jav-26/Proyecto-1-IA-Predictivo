@@ -76,7 +76,7 @@ public class DFS implements InterDiccionario {
     }
 
     /**
-     * Insertar las palabras del diccionario para hacer la búsqueda en DFS
+     * Insertar las palabras del diccionario para hacer la búsqueda en DFS.
      * @param key recibirá la palabra correspondiente a agregar para su posterior búsqueda.
      */
     public void add(String key) {
