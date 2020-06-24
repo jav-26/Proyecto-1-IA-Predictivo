@@ -38,18 +38,22 @@ public class App {
                         dictionaryList.setDictionary(DFS.getInstance());
                     }
 
-                    String method = cbxSearchMethod.getSelectedItem().toString();
+                    //Nos permite almacenar en nombre del método utilizado para la búsqueda de la palabra.
+                    String metodoUtilizado = cbxSearchMethod.getSelectedItem().toString();
 
                     long TiempoDeInicio = System.nanoTime();
                     boolean verificarExistencia = dictionaryList.contains(key);
                     long tiempoFinal = System.nanoTime();
                     long prueba = tiempoFinal - TiempoDeInicio;
 
-
+                    /**
+                     *  si la palabra buscada existe entonces se mostrará el nombre del método utilizado para
+                    *   su busqueda con la búsqueda que la encontro
+                    */
                     if (verificarExistencia) {
-                        JOptionPane.showMessageDialog(null, key + " exist by " + method + " in " + prueba + " ns");
+                        JOptionPane.showMessageDialog(null, key + " existe en la busqueda " + metodoUtilizado + " en un tiempo de: " + prueba + " ns");
                     } else {
-                        JOptionPane.showMessageDialog(null, key + " does not exist by " + method + " in " + prueba + " ns");
+                        JOptionPane.showMessageDialog(null, key + " no existe dentro de la búsqueda " + metodoUtilizado + " buscado en un tiempo:  " + prueba + " ns");
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "Entrada no nula");

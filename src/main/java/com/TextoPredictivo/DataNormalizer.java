@@ -6,7 +6,7 @@ import java.util.regex.*;
 public class DataNormalizer {
 
     public static Set<String> getListWord(String document){
-        Set<String> listWord = new LinkedHashSet<String>();
+        Set<String> listWord = new TreeSet<String>();
 
         Pattern pattern = Pattern.compile("<post>(.*?)</post>", Pattern.DOTALL);
         Matcher matcher = pattern.matcher(document);
