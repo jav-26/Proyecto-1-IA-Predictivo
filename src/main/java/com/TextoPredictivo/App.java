@@ -50,7 +50,7 @@ public class App {
                     //Variables que nos permiten determinar el tiempo que se demora en realizar la búsqueda
                     long TiempoDeInicio = System.nanoTime();
                     boolean verificarExistencia = diccionario.contains(key);
-                    List<String> list = DFS.getInstance().query(txtInput.getText().toLowerCase());
+                    //List<String> list = DFS.getInstance().query(txtInput.getText().toLowerCase());
                     long tiempoFinal = System.nanoTime();
                     long prueba = tiempoFinal - TiempoDeInicio;
 
