@@ -3,6 +3,11 @@ package com.TextoPredictivo;
 import java.io.*;
 import java.util.*;
 
+/**
+ * La Clase DataReader se encargará de la lectura de los archivos XML para luego crear una lista
+ * para su posterior búsqueda con los métodos correspondientes y además mostrará en consola
+ * la cantidad de palabras encontradas por archivos y en total.
+ */
 public class DataReader {
 
     public static void read(String pathToFolder) throws FileNotFoundException {

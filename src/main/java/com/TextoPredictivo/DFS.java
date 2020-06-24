@@ -9,17 +9,20 @@ public class DFS implements InterDiccionario {
      */
     class Nodo
     {
+        //Map nos permite crear los hijos que se generen parecido a un diccionario y así
+        //hacer que la búsqueda sea un poco más rápida, pero en principio dependerá de los
+        //métodos de búsqueda.
         Map<Character, Nodo> children = new LinkedHashMap<Character, Nodo>();
 
-        // isEndOfWord is true if the node represents
-        // end of a word
-        boolean isEndOfWord;
+        //finalDeLaPalabra nos permite saber cuando se ha terminado de leer una palabra en concreto
+        //haSidoVisitado nos dirá cuando un nodo ha sido o no visitado por las búsquedas.
+        boolean finalDeLaPalabra;
 
-        boolean isVisit;
+        boolean haSidoVisitado;
 
         Nodo(){
-            isEndOfWord = false;
-            isVisit = false;
+            finalDeLaPalabra = false;
+            haSidoVisitado = false;
         }
     };
 
@@ -69,7 +72,7 @@ public class DFS implements InterDiccionario {
             pCrawl = pCrawl.children.get(c);
         }
 
-        return (pCrawl != null && pCrawl.isEndOfWord);
+        return (pCrawl != null && pCrawl.finalDeLaPalabra);
     }
 
     /**
@@ -93,7 +96,7 @@ public class DFS implements InterDiccionario {
         }
 
         // marcar el último nodo como hoja
-        pCrawl.isEndOfWord = true;
+        pCrawl.finalDeLaPalabra = true;
     }
 
     /**
@@ -133,19 +136,19 @@ public class DFS implements InterDiccionario {
      * @param result es la lista con las palabras almacenadas y en la cual se realizará la búsqueda en profundidad.
      */
     private void DFS(Nodo hijo, String key, List<String> result){
-        hijo.isVisit = true;
-        if(hijo.isEndOfWord){
+        hijo.haSidoVisitado = true;
+        if(hijo.finalDeLaPalabra){
             result.add(key);
         }
 
         for(Character c : hijo.children.keySet())
         {
-            if(!hijo.children.get(c).isVisit){
+            if(!hijo.children.get(c).haSidoVisitado){
                 key+=c;
                 DFS(hijo.children.get(c), key, result);
                 key = key.substring(0, key.length() - 1);
             }
         }
-        hijo.isVisit = false;
+        hijo.haSidoVisitado = false;
     }
 }

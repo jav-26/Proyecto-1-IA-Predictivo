@@ -85,6 +85,9 @@ public class App {
             public void warn() {
                 if (txtInput.getText().equals("") == false) {
                     listPredictiveText.setEnabled(true);
+                    //En la siguiente lista se hace el llamado a las búsquedas según el texto que se vaya
+                    //ingresando y sin importar cómo se escriban (en mayúsculas o minúsculas gracias a
+                    //la función que nos ofrece Java denominada toLowerCase().
                     List<String> list = DFS.getInstance().query(txtInput.getText().toLowerCase());
                     int maxItemDisplay = list.size() > MAX_ITEM_DISPLAY ? MAX_ITEM_DISPLAY : list.size();
                     listPredictiveText.setListData(list.subList(0, maxItemDisplay).toArray());

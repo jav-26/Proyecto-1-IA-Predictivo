@@ -3,6 +3,10 @@ package com.TextoPredictivo;
 import java.util.*;
 import java.util.regex.*;
 
+/**
+ * Esta clase nos permite (con ayuda de la clase DataReader) distinguir entre espacios y carácteres
+ * no deseados para separar las palabras entre si en caso de que existe.
+ */
 public class DataNormalizer {
 
     public static Set<String> getListWord(String document){
