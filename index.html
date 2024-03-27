@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<title>Control de PDT's Asignados</title>
+	<!-- Google Fonts -->
+	<link href="https://fonts.gstatic.com" rel="preconnect">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  
+	<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous"/>
+	<link rel=”stylesheet” href=”https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css” /> -->
+	<!-- StyleSheets -->
+	<link href="../css/bootstrap/css/bootstrap.css" rel="stylesheet">
+  	<link href="../css/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+
+	<!-- Personalized CSS File -->
+	<link href="../css/styles.css" rel="stylesheet" />
+
+	<!-- JS Scripts -->
+	<script language="JavaScript" type="text/javascript" th:src="@{../js/functions.js}" src="../js/functions.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" 
+	integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+	<script language="JavaScript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+	<!--MENÚ DE NAVEGACIÓN-->
+	<header class="shadow fixed-top">
+		<nav class="container-xxl navbar navbar-expand-lg" aria-label="Main navigation">
+			<div class="container-fluid">
+				<a class="navbar-brand p-0 me-0 me-lg-2" th:href="@{/}"><img src="../../image/logo-lumicentro.svg"
+						class="logo-lumicentro" /></a>
+				<button class="navbar-toggler toggler-color" type="button" data-bs-toggle="collapse"
+					data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="nav navbar-nav flex-row flex-wrap bd-navbar-nav nav-pills nav-justified">
+						<li class="nav-item">
+							<a class="nav-link text-light" th:href="@{/usuarios}">Usuarios</a>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown"
+								aria-expanded="false">Empresa</a>
+							<ul class="dropdown-menu" id="myTab" role="tablist">
+								<li><a class="dropdown-item" th:href="@{/companias}">Compa&ntilde;&iacute;as</a></li>
+								<li>
+									<hr class="dropdown-divider">
+								</li>
+								<li><a class="dropdown-item" th:href="@{/sucursales}">Sucursales</a></li>
+								<li>
+									<hr class="dropdown-divider">
+								</li>
+								<li><a class="dropdown-item" th:href="@{/departamentos}">Departamentos</a></li>
+							</ul>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown"
+								aria-expanded="false">Equipos</a>
+							<ul class="dropdown-menu" id="myTab" role="tablist">
+								<li><a class="dropdown-item" th:href="@{/categorias}">Categor&iacute;as Generales</a></li>
+								<li>
+									<hr class="dropdown-divider">
+								</li>
+								<li><h6 class="dropdown-header">Secci&oacute;n Computadoras</h6></li>
+								<li><a class="dropdown-item" th:href="@{/niveles}">Niveles</a></li>
+								<li><a class="dropdown-item" th:href="@{/computadoras}">Computadoras</a></li>
+								<li><a class="dropdown-item" th:href="@{/computadoras/asignacion}">Asignar a Usuario</a></li>
+								<li>
+									<hr class="dropdown-divider">
+								</li>
+								<li><h6 class="dropdown-header">Secci&oacute;n de Monitores</h6></li>
+								<li><a class="dropdown-item" th:href="@{/monitores}">Monitores</a></li>
+								<li><a class="dropdown-item" th:href="@{/monitores/asignacion}">Asignar</a></li>
+								<li>
+									<hr class="dropdown-divider">
+								</li>
+								<li><h6 class="dropdown-header">Secci&oacute;n Multimedia</h6></li>
+								<li><a class="dropdown-item" th:href="@{/multimedia}">Multimedia</a></li>
+								<li><a class="dropdown-item" th:href="@{/multimedia/asignacionu}">Asignar a Usuario</a></li>
+								<li><a class="dropdown-item" th:href="@{/multimedia/asignacions}">Asignar a Sucursal</a></li>
+							</ul>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown"
+								aria-expanded="false">Equipos M&oacute;viles</a>
+							<ul class="dropdown-menu" id="myTab" role="tablist">
+								<li><a class="dropdown-item" th:href="@{/categorias}">Categor&iacute;as Generales</a></li>
+								<li>
+									<hr class="dropdown-divider">
+								</li>
+								<li><h6 class="dropdown-header">Secci&oacute;n Celulares</h6></li>
+								<li><a class="dropdown-item" th:href="@{/celulares}">Celulares</a></li>
+								<li><a class="dropdown-item" th:href="@{/celulares/asignacion}">Asignar a Usuario</a></li>
+								<li>
+									<hr class="dropdown-divider">
+								</li>
+								<li><h6 class="dropdown-header">Secci&oacute;n PDT's</h6></li>
+								<li><a class="dropdown-item" th:href="@{/pdts}">PDT's</a></li>
+								<li><a class="dropdown-item fw-bold active" aria-current="true" th:href="@{/pdts/asignacion}">Asignar a Usuario</a></li>
+								<li>
+									<hr class="dropdown-divider">
+								</li>
+								<li><h6 class="dropdown-header">Secci&oacute;n de Tel&eacute;fonos IP</h6></li>
+								<li><a class="dropdown-item" th:href="@{/telefonosip}">Tel&eacute;fonos IP</a></li>
+								<li><a class="dropdown-item" th:href="@{/telefonosip/asignacion}">Asignar a Usuario</a></li>
+								<li><a class="dropdown-item" th:href="@{/telefonosip/asignacion/sucursal}">Asignar a Sucursal</a></li>
+							</ul>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown"
+								aria-expanded="false">Equipos de Red</a>
+							<ul class="dropdown-menu" id="myTab" role="tablist">
+								<li><a class="dropdown-item" th:href="@{/categorias}">Categor&iacute;as Generales</a></li>
+								<li>
+									<hr class="dropdown-divider">
+								</li>
+								<li><h6 class="dropdown-header">Secci&oacute;n Equipos Red</h6></li>
+								<li><a class="dropdown-item" th:href="@{/redes}">Equipos</a></li>
+								<li><a class="dropdown-item" th:href="@{/redes/asignacion}">Asignar a Sucursal</a></li>
+								<li>
+									<hr class="dropdown-divider">
+								</li>
+								<li><h6 class="dropdown-header">Secci&oacute;n de Impresoras</h6></li>
+								<li><a class="dropdown-item" th:href="@{/impresoras}">Impresoras</a></li>
+								<li><a class="dropdown-item" th:href="@{/impresoras/asignacion}">Asignar a Sucursal</a></li>
+							</ul>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown"
+								aria-expanded="false">Trabajos</a>
+							<ul class="dropdown-menu" id="myTab" role="tablist">
+								<li><h6 class="dropdown-header">Secci&oacute;n de Trabajos</h6></li>
+								<li><a class="dropdown-item" th:href="@{/tipoTrabajos}">Tipos de Trabajos</a></li>
+								<li><a class="dropdown-item" th:href="@{/trabajos}">Trabajos</a></li>
+							</ul>
+						</li>
+					</ul>
+					<ul class="navbar-nav flex-row flex-wrap ms-md-auto">
+						<form class="d-flex navbar-right" role="search">
+							<input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar" name="keyword"
+								th:value="${keyword}">
+							<button class="btn btn-success me-1" type="submit">Buscar</button>
+							<button type="button" value="Borrar" class="btn btn-danger ms-1" onclick="clearFilterPDTUsuario()">Borrar</button>
+						</form>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<!--FINAL DE MENÚ DE NAVEGACIÓN-->
+
+	<!--CUERPO DE LA PÁGINA-->
+	<div class="container mt-lg-4">
+		<div class="row">
+			<br>			
+		</div>
+		<div class="row">
+			<h1 class="fw-bold">Registro de PDT's Asignados</h1>
+		</div>
+		<div class="col-sm-4">
+			<div class="card info-card">
+				<div class="card-body">
+					<h3 class="card-title">Cantidad
+						<span>| PDT's Asignados</span>
+					</h3>
+					<div class="d-flex align-items-center">
+						<div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+							<h3><i class="bi bi-phone"></i></h3>
+						</div>
+						<div class="ps-3">
+							<div class="row">
+								<h4 class="fw-bold col-md-auto" th:text="${totalItems}"></h4>
+								<h4 class="col-sm-auto">PDT's Asignados</h4>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card-footer">
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-auto me-auto">
+				<button type="button" data-bs-toggle="modal" data-bs-target="#asignarPDT" 
+				class="btn btn-primary btn-sm mb-3 fw-bold">Asignar PDT</button>
+			</div>
+		</div>
+
+		<!--TABLA DE PDT's ASIGNADOS-->
+		<table class="table align-middle table-bordered table-sm table-hover text-wrap text-center table-responsive">
+			<thead class="table-dark align-middle">
+				<tr>
+					<th scope="col">
+						<a class="no-style" th:href="@{'/pdts/asignacion' + '?sortField=cod&sortDir=' + ${reverseSortDir}}">
+							Cod.
+						</a>
+					</th>
+					<th scope="col">
+						<a class="no-style" th:href="@{'/pdts/asignacion' + '?sortField=usuario.nombre&sortDir=' + ${reverseSortDir}}">
+							Usuario
+						</a>
+					</th>
+					<th scope="col">
+						<a class="no-style" th:href="@{'/pdts/asignacion' + '?sortField=pdt.eTecnologico.categoria.nombreCat&sortDir=' + ${reverseSortDir}}">
+							Tipo de Equipo
+						</a>
+					</th>
+					<th scope="col">
+						<a class="no-style" th:href="@{'/pdts/asignacion' + '?sortField=pdt.nombre&sortDir=' + ${reverseSortDir}}">
+							Nombre
+						</a>
+					</th>
+					<th scope="col">
+						<a class="no-style" th:href="@{'/pdts/asignacion' + '?sortField=pdt.eTecnologico.marca&sortDir=' + ${reverseSortDir}}">
+							Marca
+						</a>
+					</th>
+					<th scope="col">
+						<a class="no-style" th:href="@{'/pdts/asignacion' + '?sortField=pdt.eTecnologico.modelo&sortDir=' + ${reverseSortDir}}">
+							Modelo
+						</a>
+					</th>
+					<th scope="col">
+						<a class="no-style" th:href="@{'/pdts/asignacion' + '?sortField=pdt.eTecnologico.serviceTag&sortDir=' + ${reverseSortDir}}">
+							Service Tag.
+						</a>
+					</th>
+					<th scope="col">
+						<a class="no-style" th:href="@{'/pdts/asignacion' + '?sortField=fechaAsignacion&sortDir=' + ${reverseSortDir}}">
+							Fecha de ASignaci&oacute;n
+						</a>
+					</th>
+					<th scope="col">
+						<a class="no-style" th:href="@{'/pdts/asignacion' + '?sortField=fechaFinAsignacionsortDir=' + ${reverseSortDir}}">
+							Fecha de Final Asignaci&oacute;n
+						</a>
+					</th>
+					<th scope="col">
+						<a class="no-style" th:href="@{'/pdts/asignacion' + '?sortField=pdt.correo&sortDir=' + ${reverseSortDir}}">
+							Correo
+						</a>
+					</th>
+					<th scope="col">
+						<a class="no-style" th:href="@{'/pdts/asignacion' + '?sortField=observacion&sortDir=' + ${reverseSortDir}}">
+							Observaci&oacute;n
+						</a>
+					</th>
+					<th scope="col">
+						<a class="no-style" th:href="@{'/pdts/asignacion' + '?sortField=pdt.cod&sortDir=' + ${reverseSortDir}}">
+							Cod. de PDT
+						</a>
+					</th>
+					<th scope="col">Opciones</th>
+				</tr>
+			</thead>
+
+			<tbody class="align-items-center">
+				<tr th:each="p: ${asignacion}">
+					<th scope="row" th:text="${p.cod}"></td>
+					<td th:text="${p.usuario.nombre} + ' ' + ${p.usuario.apellido} + ' (Usuario: ' + ${p.usuario.user} + ')'"></td>
+					<td th:text="${p.pdt.eTecnologico.categoria.nombreCat}"></td>
+					<td th:text="${p.pdt.nombre}"></td>
+					<td th:text="${p.pdt.eTecnologico.marca}"></td>
+					<td th:text="${p.pdt.eTecnologico.modelo}"></td>
+					<td th:text="${p.pdt.eTecnologico.serviceTag}"></td>
+					<td th:text="${#dates.format(p.fechaAsignacion, 'yyyy-MM-dd')}"></td>
+					<td th:text="${#dates.format(p.fechaFinAsignacion, 'yyyy-MM-dd')}"></td>
+					<td th:text="${p.pdt.correo}"></td>
+					<td th:text="${p.observacion}"></td>
+					<td th:text="${p.pdt.cod}"></td>
+					<td>
+						<a th:href="@{'/pdts/asignacion/update/' + ${p.cod}}" class="boton edit-icon"></a>
+						<a th:href="@{/pdts/asignacion/{cod}(cod=${p.cod})}" class="boton delete-icon"></a>
+					</td>
+				</tr>
+			</tbody>
+
+		</table>
+		<!--FINAL DE TABLA DE PDT's ASIGNADOS-->
+		
+		<!--- MODAL DE NUEVA ASIGNACIÓN -->		
+		<div class="asignarPDTForm">
+			<form th:action="@{/guardar/asignacion/pdt}" method="POST" >
+				<div class="modal fade" id="asignarPDT" tabindex="-1" role="dialog" aria-labelledby="asignarPDT" aria-hidden="true">
+					<div class="modal-dialog modal-dialog-scrollable">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h1 class="modal-title fs-3 fw-bold" id="asignarPDTNueva">NUEVA ASIGNACI&Oacute;N DE PDT</h1>
+							</div>
+							<div class="modal-body">
+								<div class="container-xl">
+									<div class="row g-lg-2">
+										<div class="mb-3">
+											<label class="fw-bold form-label">Seleccionar Usuario</label>
+											<select name="usuario" class="form-control form-select" required>
+												<th:block th:each="usuario : ${usuarios}">
+													<option th:text="${usuario.nombre} + ' ' + ${usuario.apellido} + ' (Usuario: ' + ${usuario.user} + ')'" th:value="${usuario.cod}" />
+												</th:block>
+											</select>
+										</div>
+									</div>
+									<div class="row g-lg-2">
+										<div class="mb-3">
+											<label class="fw-bold form-label">Seleccionar PDT</label>
+											<select name="pdt" class="form-control form-select" required>
+												<th:block th:each="p : ${pdt}">
+													<option th:text="${p.nombre} + ' (S/N: ' + ${p.eTecnologico.serviceTag} + ')'" th:value="${p.cod}" />
+												</th:block>
+											</select>
+										</div>
+									</div>
+									<div class="row g-lg-2">
+										<div class="mb-3 col-6">
+											<label for="fechaAsignacion" class="fw-bold form-label">Fecha de Asignaci&oacute;n</label>
+											<input type="date" name="fechaAsignacion" class="form-control" placeholder="Fecha de Asignaci&oacute;n"/>
+										</div>
+										<div class="mb-3 col-6">
+											<label for="fechaFinAsignacion" class="fw-bold form-label">Fecha de Finalización</label>
+											<input type="date" name="fechaFinAsignacion" class="form-control" placeholder="Fecha de Finalizaci&oacute;n de Garant&iacute;a"/>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="observacion" class="fw-bold form-label">Observaci&oacute;n</label>
+										<br>
+										<div class="mb-3">
+											<textarea type="text" name="observacion" class="form-control" id="message-text"
+											placeholder="Ingrese la observaci&oacute;n del equipo"></textarea>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-danger fw-bold" data-bs-dismiss="modal">Cancelar</button>
+								<button type="submit" class="btn btn-success fw-bold">Guardar</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		<!--- FINAL DE MODAL DE NUEVA ASIGNACIÓN -->
+	</div>
+	<!--FINAL DE CUERPO DE LA PÁGINA-->
+</body>
+
+</html>
